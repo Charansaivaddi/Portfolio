@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~/portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .terminal {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #161b22;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #21262d;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27ca3f; }
+
+        .terminal-title {
+            margin-left: 12px;
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 600px;
+        }
+
+        .prompt {
+            color: #58a6ff;
+            font-weight: 500;
+        }
+
+        .command {
+            color: #7ee787;
+            font-weight: 500;
+        }
+
+        .output {
+            margin: 10px 0 20px 0;
+            color: #c9d1d9;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .ascii-art {
+            color: #58a6ff;
+            font-weight: 400;
+            white-space: pre;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .label {
+            color: #f85149;
+            font-weight: 500;
+        }
+
+        .value {
+            color: #c9d1d9;
+        }
+
+        .project-item {
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 2px solid #30363d;
+        }
+
+        .project-name {
+            color: #58a6ff;
+            font-weight: 500;
+        }
+
+        .project-desc {
+            color: #8b949e;
+            margin-top: 5px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .skill {
+            background: #21262d;
+            color: #7ee787;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #30363d;
+            font-size: 12px;
+        }
+
+        .link {
+            color: #58a6ff;
+            text-decoration: none;
+            border-bottom: 1px dotted #58a6ff;
+        }
+
+        .link:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 2s steps(40, end);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7ee787;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .terminal {
+                margin: 10px;
+                border-radius: 0;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            
+            body {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">portfolio — zsh — 80×24</div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="section">
+                <div class="ascii-art">
+██╗  ██╗██╗         ██████╗ ███████╗███████╗███████╗ █████╗ ██████╗  ██████╗██╗  ██╗
+██║ ██╔╝██║         ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║
+█████╔╝ ██║         ██████╔╝█████╗  ███████╗█████╗  ███████║██████╔╝██║     ███████║
+██╔═██╗ ██║         ██╔══██╗██╔══╝  ╚════██║██╔══╝  ██╔══██║██╔══██╗██║     ██╔══██║
+██║  ██╗███████╗    ██║  ██║███████╗███████║███████╗██║  ██║██║  ██║╚██████╗██║  ██║
+╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ═╝
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">whoami</span></div>
+                <div class="output">
+                    <div class="info-grid">
+                        <div class="label">name:</div>
+                        <div class="value">ML Research Engineer</div>
+                        <div class="label">role:</div>
+                        <div class="value">AI/ML Developer & Researcher</div>
+                        <div class="label">focus:</div>
+                        <div class="value">Reinforcement Learning, LLM Post-Training</div>
+                        <div class="label">status:</div>
+                        <div class="value"><span class="status-indicator"></span>Available for collaboration</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">cat current_project.md</span></div>
+                <div class="output">
+                    <div class="project-item">
+                        <div class="project-name"># RL Agent for Math Word Problems</div>
+                        <div class="project-desc">
+                            Developing reinforcement learning agents capable of understanding and solving<br>
+                            mathematical word problems through advanced reasoning mechanisms.<br><br>
+                            > Combining NLP with mathematical reasoning using cutting-edge RL algorithms<br>
+                            > Training agents to break down complex problems into manageable steps<br>
+                            > Focus on accuracy and step-by-step solution generation
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">ls research_areas/</span></div>
+                <div class="output">
+                    <div class="project-item">
+                        <div class="project-name">reinforcement_learning/</div>
+                        <div class="project-desc">Advanced RL algorithms, policy gradients, multi-agent systems</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">llm_post_training/</div>
+                        <div class="project-desc">Fine-tuning techniques, RLHF, instruction tuning, domain adaptation</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">mathematical_ai/</div>
+                        <div class="project-desc">Mathematical reasoning, problem decomposition, automated solving</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">cat skills.py</span></div>
+                <div class="output">
+                    <div>#!/usr/bin/env python3</div>
+                    <div style="margin: 10px 0;">
+                        <div><span style="color: #ff7b72;">class</span> <span style="color: #ffa657;">TechnicalSkills</span>:</div>
+                        <div style="margin-left: 20px;">
+                            <div><span style="color: #79c0ff;">languages</span> = [<span style="color: #a5d6ff;">'Python'</span>]</div>
+                            <div><span style="color: #79c0ff;">ml_frameworks</span> = [<span style="color: #a5d6ff;">'PyTorch', 'TensorFlow', 'scikit-learn'</span>]</div>
+                            <div><span style="color: #79c0ff;">rl_libs</span> = [<span style="color: #a5d6ff;">'Stable-Baselines3', 'Ray RLlib', 'OpenAI Gym'</span>]</div>
+                            <div><span style="color: #79c0ff;">specialization</span> = [</div>
+                            <div style="margin-left: 20px;">
+                                <div><span style="color: #a5d6ff;">'Reinforcement Learning',</span></div>
+                                <div><span style="color: #a5d6ff;">'LLM Fine-tuning',</span></div>
+                                <div><span style="color: #a5d6ff;">'Post-training Optimization',</span></div>
+                                <div><span style="color: #a5d6ff;">'Mathematical Reasoning',</span></div>
+                                <div><span style="color: #a5d6ff;">'Deep Learning'</span></div>
+                            </div>
+                            <div>]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">cat learning_status.log</span></div>
+                <div class="output">
+                    <div>[2025-06-18 12:30:15] <span style="color: #7ee787;">INFO</span> Currently learning: Advanced RL Algorithms</div>
+                    <div>[2025-06-18 12:30:16] <span style="color: #7ee787;">INFO</span> Focus area: LLM Post-training & Fine-tuning</div>
+                    <div>[2025-06-18 12:30:17] <span style="color: #58a6ff;">DEBUG</span> Exploring: RLHF techniques for math problem solving</div>
+                    <div>[2025-06-18 12:30:18] <span style="color: #58a6ff;">DEBUG</span> Research: Policy gradient methods for reasoning tasks</div>
+                    <div>[2025-06-18 12:30:19] <span style="color: #f85149;">WARN</span> Always learning, always improving...</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command">find . -name "contact*"</span></div>
+                <div class="output">
+                    <div>./contact/github: <a href="https://github.com" class="link">github.com/yourusername</a></div>
+                    <div>./contact/email: <a href="mailto:your.email@example.com" class="link">your.email@example.com</a></div>
+                    <div>./contact/linkedin: <a href="https://linkedin.com" class="link">linkedin.com/in/yourprofile</a></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div><span class="prompt">user@ml-research:~$</span> <span class="command typing">echo "Let's build the future of AI together"</span><span class="cursor">_</span></div>
+                <div class="output" style="color: #7ee787; font-weight: 500;">
+                    Let's build the future of AI together
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate typing effect on last command
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const typingElement = document.querySelector('.typing');
+                if (typingElement) {
+                    typingElement.style.width = '100%';
+                }
+            }, 1000);
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#7ee787';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.color = '#58a6ff';
+            });
+        });
+    </script>
+</body>
+</html>
